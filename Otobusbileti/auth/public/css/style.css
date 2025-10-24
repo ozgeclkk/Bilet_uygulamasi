@@ -1,0 +1,746 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+}
+
+
+.header-bar {
+    background-color: #5D3FD3; 
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.auth-buttons a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.auth-buttons a.register-btn {
+    background-color: #C3B1E1; 
+    color: #5D3FD3; 
+    font-weight: bold;
+}
+
+.auth-buttons a:hover {
+    background-color: #4A32A1;
+    border-color: #C3B1E1;
+}
+
+.auth-buttons a.register-btn:hover {
+    background-color: #fff;
+    border-color: #5D3FD3;
+}
+
+
+
+/* ARAMA KUTUSU (Obilet Tarzı Yanyana Form) Stilleri */
+
+.arama-konteyner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh; 
+    padding: 50px 0; 
+}
+
+.arama-kutusu {
+    width: 90%;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #C3B1E1;
+}
+
+.arama-formu {
+    display: flex;
+    align-items: stretch; 
+    gap: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+
+.input-grup {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    border-right: 1px solid #eee; 
+    min-width: 150px;
+}
+
+
+.input-grup:last-of-type {
+    border-right: none;
+    flex: 0 0 180px; 
+    padding: 0; 
+}
+
+.input-grup label {
+    font-weight: bold;
+    color: #5D3FD3;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+select, 
+input[type="date"] {
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    font-size: 1.1em;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.arama-butonu {
+    width: 100%;
+    height: 100%; 
+    padding: 15px 25px;
+    background-color: #5D3FD3; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.arama-butonu:hover {
+    background-color: #4A32A1;
+}
+
+
+
+/* Sefer Listeleme Sayfası Ana Yapı Stilleri */
+
+
+/* Sayfa Konteyneri: Filtre ve Liste alanlarını yan yana tutar */
+.sayfa-konteyner {
+    display: flex;
+    gap: 25px; /* İki sütun arasındaki boşluk */
+    padding: 30px;
+    max-width: 1300px;
+    margin: 20px auto; /* Sayfayı ortalar */
+}
+
+/* ---------------------------------------------------- */
+/* Filtre Paneli (SOL TARAFTA) Stilleri */
+/* ---------------------------------------------------- */
+.filtre-panel {
+    width: 250px; /* Sabit genişlik */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    height: fit-content; /* İçeriği kadar yer kapla */
+    position: sticky; /* Sayfa kaydırılırken sabit kalsın */
+    top: 20px;
+}
+
+.filtre-grup {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #C3B1E1; /* Lila ayırıcı çizgi */
+}
+
+.filtre-grup h4 {
+    margin-top: 0;
+    color: #5D3FD3; /* Mor başlık */
+    font-size: 1.1em;
+}
+
+.filtre-uygula {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Yeşil, onay/uygulama rengi */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.filtre-uygula:hover {
+    background-color: #1e7e34;
+}
+
+/* ---------------------------------------------------- */
+/* Sefer Listesi ve Sıralama (SAĞ TARAFTA) Stilleri */
+/* ---------------------------------------------------- */
+.sefer-listesi {
+    flex-grow: 1; /* Kalan tüm alanı kapla */
+}
+
+.siralama-alani {
+    display: flex;
+    justify-content: flex-end; /* Sağ tarafa hizala */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.siralama-alani select {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+
+/* ---------------------------------------------------- */
+/* HER BİR SEFER KARTININ STİLİ */
+/* ---------------------------------------------------- */
+.sefer-karti {
+    display: flex;
+    justify-content: space-between; /* İçerik arasında boşluk bırakır */
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #E6E6FA; 
+    border-left: 5px solid #5D3FD3; /* Sola Mor Vurgu Çizgisi */
+    border-radius: 8px;
+    background-color: #fff;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.sefer-karti:hover {
+    box-shadow: 0 4px 15px rgba(93, 63, 211, 0.15); /* Hafif Mor gölge */
+    transform: translateY(-2px); /* Hafif yukarı kayma efekti */
+}
+
+/* İçerik Bloklarının Düzeni */
+.firma-bilgi { width: 25%; text-align: left; }
+.saat-bilgi { width: 35%; text-align: center; }
+.fiyat-bilgi { width: 20%; text-align: right; }
+
+.firma-bilgi strong { color: #5D3FD3; font-size: 1.1em; } 
+.firma-bilgi span { display: block; font-size: 0.9em; color: #6c757d; }
+
+/* Saat Vurgusu */
+.kalkis-saat, .varis-saat {
+    font-size: 1.6em; 
+    font-weight: bold;
+    color: #5D3FD3; /* Mor saatler */
+    display: inline-block;
+    padding: 0 10px;
+}
+.ok-isareti {
+    color: #C3B1E1; 
+}
+
+/* Fiyat Vurgusu */
+.fiyat {
+    font-size: 2em;
+    color: #dc3545; /* Kırmızı fiyat (Dikkat çekmesi için) */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Bilet Al Butonu */
+.bilet-al-butonu {
+    padding: 10px 15px;
+    background-color: #C3B1E1; /* Açık Lila Buton */
+    color: #5D3FD3; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.bilet-al-butonu:hover {
+    background-color: #A08ABF;
+}
+
+
+/* REGISTER & LOGIN STİLLERİ */
+
+
+
+.auth-form {
+    width: 90%;
+    max-width: 450px; 
+    margin: 50px auto; 
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #C3B1E1; 
+}
+
+
+.auth-form h1 {
+    text-align: center;
+    color: #5D3FD3; 
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+
+.auth-form div {
+    margin-bottom: 15px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95em;
+}
+
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+
+.auth-form input.error {
+    border-color: #dc3545; 
+}
+
+.auth-form small {
+    color: #dc3545;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+}
+
+
+.auth-form label[for="agree"] {
+    display: flex; 
+    align-items: center;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+.auth-form label[for="agree"] a {
+    color: #5D3FD3; 
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+
+.auth-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #5D3FD3; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.auth-form button[type="submit"]:hover {
+    background-color: #4A32A1;
+}
+
+/* Footer (Giriş Yap / Kayıt Ol linki) */
+.auth-form footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.auth-form footer a {
+    color: #5D3FD3; 
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* style.css dosyanızda .arama-konteyner bloğunu bulun ve aşağıdaki gibi düzenleyin */
+.arama-konteyner {
+    /* Eski stiller: min-height: 40vh; kaldırıldı */
+    padding: 20px 0; /* Üstten ve alttan daha az boşluk bırakır */
+    background-color: #f4f7f9; /* Sayfa arkaplanı ile uyumlu tutulur */
+    /* Yeni eklendi: Header'dan ayırmak için hafif bir çizgi */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
+/* Sayfa içeriği için maksimum genişlik ve ortalama */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 30px; 
+}
+/* style.css dosyanızda .arama-kutusu bloğunu bulun ve aşağıdaki ile değiştirin */
+.arama-kutusu {
+    width: 90%;
+    max-width: 1300px; /* İçerik ile aynı maksimum genişlik */
+    padding: 0; /* İç dolguyu kaldırıyoruz */
+    margin: 0 auto; /* Sayfayı ortalamak için */
+    border-radius: 0; /* Köşeleri düz yapıyoruz */
+    background-color: transparent; /* Arkaplanı şeffaf yapıyoruz */
+    box-shadow: none; /* Gölgeyi kaldırıyoruz */
+    border: none; /* Kenarlığı kaldırıyoruz */
+}
+
+/* Arama formundaki kenarlığı kaldırın, iç çizgiler yeterli */
+.arama-formu {
+    border: none; /* Mevcut 1px solid #ddd kenarlığını kaldırır */
+    border-radius: 0;
+}
+/* Bilet Al Butonunu Mor Vurgu Yapma */
+.bilet-al-butonu {
+    padding: 10px 15px;
+    background-color: #5D3FD3; /* Ana Mor Buton */
+    color: white; /* Yazıyı beyaz yapın */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.bilet-al-butonu:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+}
+
+/* ==================================================================== */
+/* ADMIN PANELİ GÖRÜNÜM GÜNCELLEMELERİ (MOR TEMA - BUTON ODAKLI) */
+/* ==================================================================== */
+
+/* Admin Panel Ana Konteyneri (Sade Arkaplan) */
+.admin-panel-container {
+    max-width: 1100px; 
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff; /* Beyaz Arkaplan */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07); /* Hafif belirgin gölge */
+    border: 1px solid #eee; 
+}
+
+/* Ana Başlık (KALIN MOR) */
+.admin-panel-container > h1 {
+    color: #5D3FD3; 
+    text-align: center;
+    border-bottom: 2px solid #5D3FD3; 
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: bold; /* Kalın Yazı */
+    font-size: 2em; /* Biraz daha büyük */
+}
+
+/* Üst Modül Sekmeleri (MOR KUTUCUK STİLİ) */
+.admin-module-tabs {
+    text-align: center; 
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Hafif ayırıcı çizgi */
+}
+
+.admin-module-tabs a {
+    display: inline-block;
+    padding: 10px 20px; /* Biraz daha kompakt butonlar */
+    margin: 0 5px 8px 5px; 
+    text-decoration: none;
+    color: white; /* Beyaz Yazı */
+    background-color: #5D3FD3; /* Mor Arkaplan */
+    border: none; /* Çerçeve yok */
+    border-radius: 6px; 
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    box-shadow: 0 2px 4px rgba(93, 63, 211, 0.3); /* Mor gölge */
+}
+
+.admin-module-tabs a:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+    transform: translateY(-2px); /* Hafif kalkma efekti */
+}
+
+.admin-module-tabs a.active {
+    background-color: #4A32A1; /* Aktif Buton Koyu Mor */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* İçeri gölge efekti */
+    transform: translateY(0); /* Kalkma efektini iptal et */
+}
+
+/* Modül İçerik Başlıkları (h2, h3) - Daha Sade */
+.admin-panel-container h2,
+.admin-panel-container h3 {
+    color: #4A32A1; /* Koyu Mor Başlık */
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee; /* İnce Gri Ayırıcı */
+    font-size: 1.4em; /* Biraz daha küçük */
+}
+
+/* Firma Ekleme Formu */
+.admin-form-section { 
+     background-color: #fdfcff; /* Çok hafif lila arkaplan */
+     padding: 20px;
+     border-radius: 6px;
+     margin-bottom: 30px;
+     border: 1px solid #eee;
+}
+
+.add-company-form { 
+    display: flex; 
+    align-items: stretch; /* Input ve butonu aynı yükseklikte yap */
+    gap: 10px; 
+}
+
+.add-company-form input[type="text"] {
+    flex-grow: 1; 
+    padding: 10px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Firma Ekle Butonu (Mor Kutucuk) */
+.add-company-form button[type="submit"] {
+    padding: 10px 20px; 
+    background-color: #5D3FD3; /* Mor Arkaplan */
+    color: white; /* Beyaz Yazı */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    white-space: nowrap; 
+}
+.add-company-form button[type="submit"]:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+}
+
+/* Mevcut Firmalar Tablosu */
+.admin-table-section { 
+    margin-top: 30px;
+}
+.admin-data-table { 
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 6px; 
+    overflow: hidden; 
+    box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+    border: 1px solid #eee;
+}
+
+.admin-data-table th,
+.admin-data-table td {
+    border: 1px solid #eee; 
+    padding: 12px 15px; 
+    text-align: left;
+    vertical-align: middle; 
+}
+
+.admin-data-table th {
+    background-color: #f8f7fc; 
+    color: #5D3FD3; 
+    font-weight: bold;
+    border-bottom: 2px solid #C3B1E1; /* Başlık altına lila çizgi */
+}
+
+.admin-data-table tr:nth-child(even) {
+    background-color: #fdfcff; 
+}
+
+/* Sil Butonu (Mor Kutucuk) */
+.admin-data-table td .delete-button { 
+    padding: 6px 12px;
+    background-color: #5D3FD3; /* Mor Arkaplan */
+    color: white; /* Beyaz Yazı */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold; /* Yazı kalın */
+    transition: background-color 0.3s;
+}
+.admin-data-table td .delete-button:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+}
+/* ==================================================================== */
+/* FİRMA ADMİN PANELİ STİLLERİ (Mor Tema) */
+/* ==================================================================== */
+
+/* Genel panel konteyneri (Admin paneli ile aynı stili kullanabilir) */
+/* .admin-panel-container { ... } zaten tanımlı olmalı */
+
+/* Firma Admin Paneli Başlıkları */
+.firma-admin-panel h1, 
+.firma-admin-panel h2,
+.firma-admin-panel h3,
+.firma-admin-panel h4 {
+    color: #5D3FD3; /* Mor Başlık */
+}
+
+.firma-admin-panel h1 {
+    text-align: center;
+    border-bottom: 2px solid #5D3FD3;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.firma-admin-panel h2,
+.firma-admin-panel h3,
+.firma-admin-panel h4 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #C3B1E1;
+}
+
+/* Sefer Ekleme Formu Bölümü */
+.sefer-crud-form-section {
+     background-color: #f8f7fc; /* Açık lila/gri arkaplan */
+     padding: 25px;
+     border-radius: 8px;
+     margin-bottom: 30px;
+     border: 1px solid #eee;
+}
+
+.add-trip-form {
+    display: flex;
+    flex-wrap: wrap; /* Küçük ekranlarda alt alta geçsin */
+    gap: 15px; /* Elemanlar arası boşluk */
+}
+
+/* Form içindeki her bir giriş grubu için */
+.add-trip-form .input-group {
+    display: flex;
+    flex-direction: column; /* Etiket üste, input alta */
+    flex: 1; /* Esnek genişlik */
+    min-width: 180px; /* Minimum genişlik */
+}
+
+.add-trip-form label {
+    font-weight: bold;
+    color: #4A32A1; /* Koyu Mor Etiket */
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.add-trip-form input[type="text"],
+.add-trip-form input[type="datetime-local"], /* Yeni Tip */
+.add-trip-form input[type="number"],
+.add-trip-form select {
+    padding: 10px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Sefer Ekle Butonu */
+.add-trip-form .submit-button-group {
+    flex-basis: 100%; /* Buton yeni satıra geçsin (isteğe bağlı) veya flex: 0 0 auto; ile yanına al */
+    text-align: right; /* Butonu sağa yasla */
+    margin-top: 10px;
+}
+
+.add-trip-form button[type="submit"] {
+    padding: 10px 25px; 
+    background-color: #5D3FD3; /* Mor Arkaplan */
+    color: white; /* Beyaz Yazı */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.add-trip-form button[type="submit"]:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+}
+
+/* Mevcut Seferler Tablosu */
+.sefer-table-section {
+    margin-top: 30px;
+}
+.sefer-data-table { /* Admin tablosuyla aynı stili kullanabiliriz */
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #eee;
+}
+
+.sefer-data-table th,
+.sefer-data-table td {
+    border: 1px solid #eee; 
+    padding: 12px 15px; 
+    text-align: left;
+    vertical-align: middle; 
+}
+
+.sefer-data-table th {
+    background-color: #f8f7fc; 
+    color: #5D3FD3; 
+    font-weight: bold;
+    border-bottom: 2px solid #C3B1E1; 
+}
+
+.sefer-data-table tr:nth-child(even) {
+    background-color: #fdfcff; 
+}
+
+/* Sil Butonu (Mor Kutucuk) */
+.sefer-data-table td .delete-button { 
+    padding: 6px 12px;
+    background-color: #5D3FD3; /* Mor Arkaplan */
+    color: white; /* Beyaz Yazı */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold; 
+    transition: background-color 0.3s;
+}
+.sefer-data-table td .delete-button:hover {
+    background-color: #4A32A1; /* Koyu Mor Hover */
+}
+
+/* Düzenle Linki */
+.sefer-data-table td a {
+    color: #007bff; /* Mavi Link */
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.sefer-data-table td a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,21 @@
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: biletuyg
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./db-data:/var/www/html/db
+    depends_on:
+      - db
+
+  db:
+    image: alpine/git 
+    container_name: bilet_db_storage
+    command: "tail -f /dev/null"
+    volumes:
+      - ./db-data:/var/www/html/db
