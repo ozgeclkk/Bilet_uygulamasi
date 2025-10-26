@@ -40,6 +40,4 @@ docker compose up --build
 Burdan ulaşabilirsiniz
 http://localhost:8080
 
-Admin Hesap Bilgileri
-Ozge
-Ozge123.
+
