@@ -41,3 +41,7 @@ Burdan ulaşabilirsiniz
 http://localhost:8080
 
 
+Admin Kullanıcısının Bİlgileri:
+Ozge
+Ozge123.
+
